@@ -1,5 +1,6 @@
 public class Calc {
     public static void main(String[] args) {
+        System.out.println("Task 1: ");
         int x = Integer.parseInt(args[0]);
         int y = Integer.parseInt(args[1]);
 
@@ -10,5 +11,11 @@ public class Calc {
         } else {
             System.out.println(x / 2);
         }
+
+        System.out.println("Task 2: ");
+        double result = Equation.calculate_d(x, y);
+
+        System.out.println(result);
+        
     }
 }
