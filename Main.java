@@ -5,6 +5,30 @@ import CircusManager.*;
 public class Main {
     public static void main(String[] args) {
 
+        String username = System.getProperty("user.name"); 
+
+        System.out.println("Hello, " + username + "!");
+
+
+    }
+
+    static void task_1() {
+
+    }
+
+    static void task_2() {
+        
+    }
+
+    static void task_3() {
+        
+    }
+
+    static void task_4() {
+        
+    }
+
+    static void task_5() {
         Circus hse = new Circus("VPI23", "Nizhniy Novgorod", LocalDate.parse("2023-09-30"), 1839600, 83500);
 
         hse.setAuthor("HSE");
@@ -28,6 +52,9 @@ public class Main {
         list.addNewPerfomance(koshki);
 
         list.Print();
+    }
 
+    static void task_6() {
+        
     }
 }
