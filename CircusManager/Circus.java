@@ -1,3 +1,4 @@
+package CircusManager;
 import java.time.LocalDate;
 
 public class Circus {
@@ -97,15 +98,13 @@ public class Circus {
 
     @Override
     public String toString() {
-        return "Circus:\n"
-        + "Свойства: " + "\n"
-        + "Название представления: " + perfomanceName + "\n"
+        return "Название представления: " + perfomanceName + "\n"
         + "Город: " + city + "\n"
         + "Дата премьеры: " + openingDate + "\n"
         + "Период проведения, мин: " + perfomanceDuration + "\n"
         + "Цена билета, руб.: " + ticketPrice + "\n"
         + "Автор: " + author + "\n"
         + "Жанр: " + genre + "\n"
-        + "Количество актеров, шт.: " + actors + "\n";
+        + "Количество актеров, шт.: " + actors;
     }
 }
