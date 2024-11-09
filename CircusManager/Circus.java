@@ -1,7 +1,7 @@
 package CircusManager;
 import java.time.LocalDate;
 
-public class Circus {
+public class Circus  implements Comparable<Circus>  {
     /*
      * Свойства:
      * perfomanceName: название представления
@@ -106,5 +106,10 @@ public class Circus {
         + "Автор: " + author + "\n"
         + "Жанр: " + genre + "\n"
         + "Количество актеров, шт.: " + actors;
+    }
+
+    @Override
+    public int compareTo(Circus other) {
+        return Integer.compare(perfomanceDuration, other.perfomanceDuration);
     }
 }
