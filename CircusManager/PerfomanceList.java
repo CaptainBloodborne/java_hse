@@ -2,6 +2,7 @@ package CircusManager;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.io.Serializable;
 
 class CityComparator implements Comparator<Circus> {
 
@@ -21,7 +22,7 @@ class DateComparator implements Comparator<Circus> {
     }
 }
 
-public class PerfomanceList{
+public class PerfomanceList implements Serializable{
     private ArrayList<Circus> perfomances;
 
     public PerfomanceList() {

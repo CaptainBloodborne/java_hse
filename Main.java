@@ -1,3 +1,7 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -30,7 +34,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         boolean exit = false;
-
 
         while (!exit) {
             System.out.println(userMenu);
@@ -262,9 +265,7 @@ public class Main {
                 
                 Enter '0' to exit""";
 
-
-
-        boolean exit = true;
+        boolean exit = false;
 
         while (!exit) {
 
@@ -287,6 +288,7 @@ public class Main {
                     list.addNewPerfomance(hse);
                 case 0:
                     System.out.println("Exiting task 6...");
+                    exit = true;
                     break;
                 default:
                     System.out.println(userSelection + " doesn't exist. Try again");
@@ -323,15 +325,12 @@ public class Main {
                 
                 Enter '0' to exit""";
 
-
-        System.out.println(userMenu);
-
-        int userSelection = scanner.nextInt();
         boolean exit = false;
 
-        System.out.println(userSelection);
-
         while (!exit) {
+            int userSelection = scanner.nextInt();
+            System.out.println(userMenu);
+
             switch (userSelection) {
                 case 1:
                     list.sortPerfomances();
@@ -356,6 +355,7 @@ public class Main {
                     break;
                 case 0:
                     System.out.println("Exiting task 7...");
+                    exit = true;
                     break;
                 default:
                     System.out.println(userSelection + " doesn't exist. Try again");
@@ -366,7 +366,7 @@ public class Main {
 
     }
 
-    static void task_8(Scanner scanner) {
+    static void task_8(Scanner scanner) throws Exception {
 
         AcrobaticPerfomance shapito = new AcrobaticPerfomance("Shapito", "Moscow", LocalDate.parse("2024-02-25"), 7200, 9999, "rope walking");
 
@@ -390,18 +390,17 @@ public class Main {
                 2. Add an item
                 3. Print sorted by city
                 4. Print sorted by date
+                5. Save to file
+                6. Load from file
                 
                 Enter '0' to exit""";
 
-
-        System.out.println(userMenu);
-
-        int userSelection = scanner.nextInt();
         boolean exit = false;
 
-        System.out.println(userSelection);
-
         while (!exit) {
+            System.out.println(userMenu);
+            int userSelection = scanner.nextInt();
+
             switch (userSelection) {
                 case 1:
                     list.sortPerfomances();
@@ -424,8 +423,28 @@ public class Main {
                     list.sortByDate();
                     list.Print();
                     break;
+                case 5:
+                    FileOutputStream fileOutputStream= new FileOutputStream("perf_storage.txt");
+                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+                    objectOutputStream.writeObject(list);
+                    objectOutputStream.flush();
+                    objectOutputStream.close();
+
+                    break;
+                case 6:
+                    FileInputStream fileInputStream  = new FileInputStream("perf_storage.txt");
+                    ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                    PerfomanceList listReaded = (PerfomanceList) objectInputStream.readObject();
+                    objectInputStream.close();
+
+                    System.out.println("====== Readed List ========");
+                    listReaded.Print();
+                    System.out.println("==============");
+                    break;
                 case 0:
                     System.out.println("Exiting task 8...");
+                    exit = true;
                     break;
                 default:
                     System.out.println(userSelection + " doesn't exist. Try again");

@@ -1,7 +1,8 @@
 package CircusManager;
 import java.time.LocalDate;
+import java.io.Serializable;
 
-public class Circus  implements Comparable<Circus>  {
+public class Circus  implements Comparable<Circus>, Serializable  {
     /*
      * Свойства:
      * perfomanceName: название представления
